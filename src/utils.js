@@ -114,7 +114,7 @@ exports.removeEmptyFirestoreProperties = function removeEmptyFirestoreProperties
     return obj;
   }
   if (obj instanceof Date) return obj;
-
+  if (obj.constructor.name === 'MockFirestoreDocument') return obj;
   var keys = getKeys(obj);
   if (keys.length > 0) {
     for (var s in obj) {
