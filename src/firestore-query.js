@@ -151,6 +151,12 @@ MockFirestoreQuery.prototype.where = function (property, operator, value) {
   }
 };
 
+MockFirestoreQuery.prototype.onSnapshot = function (cb) {
+  this.get().then(function(data) {
+    cb(data);
+  })
+};
+
 MockFirestoreQuery.prototype.orderBy = function (property, direction) {
   var query = new MockFirestoreQuery(this.path, this._getData(), this.parent, this.id);
   query.orderedProperties.push(property);

@@ -25,4 +25,14 @@ MockFirestoreQuerySnapshot.prototype.forEach = function (callback, context) {
   });
 };
 
+MockFirestoreQuerySnapshot.prototype.docChanges = function () {
+  return this.docs.map(function(doc) {
+    return {
+      doc: doc,
+      type: 'added'
+    }
+  });
+};
+
+
 module.exports = MockFirestoreQuerySnapshot;
